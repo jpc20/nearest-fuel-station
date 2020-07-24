@@ -1,21 +1,33 @@
-<div class="name">
+<h1 class="name">
   <%= @station.name %>
-</div>
+</h1>
 <div class="address">
+  <h3>Address: </h3>
   <%= @station.address %>
 </div>
 <div class="fuel-type">
-  <%= @station.fuel_type %>
+  <h3>Fuel Type: </h3>
+   <%= @station.fuel_type %>
 </div>
 <div class="access-times">
+  <h3>Access Times: </h3>
   <%= @station.access_times%>
 </div>
 <div class="distance">
-  <%= @map.distance %>
+  <h3>Distance:</h3>
+  <%= @map.distance.round(1) %> miles
 </div>
 <div class="travel-time">
-  <%= @map.travel_time %>
+  <h3>Travel Time:</h3>
+  <%= @map.travel_time if @map.travel_time > 0 %>
+  <%= @map.travel_time + 1 if @map.travel_time == 0 %>
+  minute(s)
 </div>
 <div class="directions">
-  <%= @map.directions %>
+  <h3>Directions:</h3>
+  <ul>
+    <% @map.directions.each do |direction| %>
+      <li><%= direction %></li>
+    <% end %>
+  </ul>
 </div>
